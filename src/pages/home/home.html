@@ -1,14 +1,39 @@
+<!-- <div id="custom-overlay" [style.display]="splash ? 'flex': 'none'">
+  <div class="flb">
+    <div class="Aligner-item Aligner-item--top"></div>
+    <img src="assets/logo.png">
+    <div class="Aligner-item Aligner-item--bottom"></div>
+  </div>
+</div> -->
+
 <ion-header>
-  <ion-navbar>
+  <ion-navbar class="toolbar-background">
     <ion-title>
-      Ionic Blank
+      <p style="color: white">Item Sorter</p>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-buttons text-center>
+      <button ion-button class="padding3 margin" [ngStyle]="{'background-color': nextColor}" (click)="reset()">reset</button>
+  </ion-buttons>
+  <div class = "item item-block">
+    <ion-item padding-top>
+        <ion-input type="text" class="button" (keyup.enter)="addName()" clearInput [(ngModel)]="name" placeholder="enter name"></ion-input>
+        <button ion-button padding  item-right [ngStyle]="{'background-color': nextColor}" class="button padding2" (click)="addName()">add</button>
+    </ion-item>
+  </div>
+  <ion-buttons text-center>
+    <div padding-top>
+  <button ion-button full class="button padding" [ngStyle]="{'background-color': nextColor}" [disabled]="more" (click)="nextPage()">add items</button>
+  </div>
+  </ion-buttons>
+  <div class="padding">  
+    <ion-card>
+      <ion-list>
+          <ion-item no-lines class="bottom-border" *ngFor="let name of names">{{name}}</ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
 </ion-content>

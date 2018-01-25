@@ -1,0 +1,41 @@
+<!--
+  Generated template for the AdditemsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar class="toolbar-background home-nav">
+    <ion-title>
+      <p style="color: white">Choose Items</p>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-buttons text-center>
+    <button [class.hide]="!more3" [ngStyle]="{'background-color': nextColor}" (click)="newItems()" ion-button>choose new items</button>
+  </ion-buttons>
+  <h2 text-center class="margin" [class.hide]="more3">INPUT {{itemCount}} MORE</h2>
+  <div class = "item item-block">
+    <ion-item padding-top>
+        <ion-input type="text" class="button" (keyup.enter)="addItem()" [class.hide]="more2" clearInput [(ngModel)]="item" placeholder="enter item"></ion-input>
+        <button ion-button padding  item-right [ngStyle]="{'background-color': nextColor}" [class.hide]="more2" class="button padding2" (click)="addItem()">add</button>
+    </ion-item>
+  </div>
+  <ion-buttons text-center>
+  <div padding-top>
+    <button ion-button full class="button padding" [ngStyle]="{'background-color': nextColor}" [disabled]="more" (click)="nextPage()">sort</button>
+  </div>
+  </ion-buttons>
+  <div class="padding">  
+    <ion-card>
+      <ion-list>
+          <ion-item no-lines class="bottom-border" *ngFor="let item of items">{{item}}</ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+</ion-content>
